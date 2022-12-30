@@ -2,7 +2,7 @@ import { NotificationInstance } from "antd/es/notification/interface"
 import axios from "axios"
 
 export const getCharInfo = async (name: string, id: number, noti: NotificationInstance) => {
-    const url = `${process.env.REACT_APP_LOA_HOST}/v3/char/${encodeURI(name)}`    
+    const url = `${process.env.REACT_APP_LOA_HOST}/v3/char/${encodeURI(name)}/electron`    
 
     try {
         const res = await axios.get(url)
@@ -19,18 +19,6 @@ export const getCharInfo = async (name: string, id: number, noti: NotificationIn
     }
 
     return {} as CharInfo
-}
-
-export const getGuardianPrice = async () => {
-    const url = `${process.env.REACT_APP_LOA_HOST}/v3/guardian/price`
-    
-    const res = await axios.get(url)
-    if (res.status === 200) {
-        const info = res.data as GuardianPrice
-        return info
-    } 
-        
-    return {} as GuardianPrice
 }
 
 export const getColor = (quality: number, isDark=false) => {
