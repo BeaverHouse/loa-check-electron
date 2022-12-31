@@ -70,6 +70,7 @@ function MainPage() {
             theme: 'darkblue',
             native: true
           });
+          setSelectedId(0)
         }
       })
   }
