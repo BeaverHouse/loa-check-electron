@@ -2,10 +2,12 @@ import { App, Input, Button, Empty, Switch, List } from 'antd';
 import { useContext, useState, useRef, useEffect } from 'react';
 import addNotification from 'react-push-notification';
 import Swal from 'sweetalert2';
+import { CheckCircleOutlined, WarningOutlined } from '@ant-design/icons';
 import { LoaContext } from '../../contexts';
 import { getCharInfo, getNotiText } from '../../func/function';
 import { BigText, ColumnFlexDiv, RowFlexDiv } from '../atoms/styles';
 import Profile from '../organisms/Profile';
+import { BLUE_TONE } from '../../func/constant';
 
 const { clipboard } = window.require("electron");
 const { Search } = Input;
@@ -132,7 +134,7 @@ function MainPage() {
               onSearch={searchNickName}
           />
         </RowFlexDiv>
-        <RowFlexDiv style={{margin: "10px auto", justifyContent: "stretch", flexGrow: 1}}>
+        <RowFlexDiv style={{margin: "5px auto", justifyContent: "stretch", flexGrow: 1}}>
             { infos.length > 0 ?
               <Profile {...infos[SelectedId]}/>
             : <Empty description={"아직 아무것도 없어요..."}/> }
@@ -140,15 +142,18 @@ function MainPage() {
               header={<BigText>최근 검색</BigText>}
               bordered
               style={{
-                width: "200px",
-                marginLeft: "30px"
+                width: "230px",
+                marginLeft: "10px"
               }}
               dataSource={infos}
               renderItem={(item, idx) => <List.Item 
                 onClick={() => setSelectedId(idx)}
-                style={{cursor: "pointer"}}
+                style={{cursor: "pointer", padding: "10px 5px 10px 5px"}}
               >
-                {idx+1}. {item.basicInfo.nickname}
+                {item.basicInfo.isSafe 
+                  ? <CheckCircleOutlined style={{color:isDark ? BLUE_TONE : "green"}}/> 
+                  : <WarningOutlined style={{color:"red"}}/>}
+                &nbsp;{item.basicInfo.nickname}
               </List.Item>}
             />
         </RowFlexDiv>
