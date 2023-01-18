@@ -74,15 +74,15 @@ const SubEquip: React.FC<SubEquipInfo> = (info) => {
                     borderLeft: `1px dashed ${BLUE_TONE}`,
                     display: "grid",
                     gridTemplateColumns: "1fr 1fr",
-                    height: "130px",
-                    gap: '3px',
+                    minHeight: "130px",
+                    gap: '3px 5px',
                     padding: "5px",
                     flexGrow: 1
                 }}>
                     <MidText style={{gridColumn: "span 2"}}>각인 상세</MidText>
                     {info.imprintings.map((a, idx) => (
                         <div style={{textAlign: "left"}} key={idx}>
-                            <SmallText strong style={{fontSize: "13px", textIndent: "5px", wordBreak: "keep-all"}}
+                            <SmallText strong style={{fontSize: "12px", wordBreak: "keep-all"}}
                                 type={jobBooks.includes(a.name) ? "success" : 
                                 ( a.name.includes("감소") ? "danger" : undefined)}>
                                 Lv.{a.value} {a.name}

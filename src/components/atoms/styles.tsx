@@ -32,8 +32,10 @@ export const BigText = styled(Text)`
 export const IconImg = styled.img`
     width: 35px;
     height: 35px;
+    object-fit: contain;
 `
 export const SmallIconImg = styled.img`
     width: 28px;
     height: 28px;
+    object-fit: contain;
 `
